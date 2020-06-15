@@ -9,7 +9,7 @@
     <style>
         .box{
             position: absolute;
-            top: 800%;
+            top: 600%;
             left:50%;
             transform: translate(-50%,-50%);
             width: 300px;
@@ -89,80 +89,38 @@
 <body>
     <div class="container">
         <div id="main">
-            <center>BUYING DETAILS</center>
+            <center>REGISTER</center>
             <div class="box">
-                <h2>Hello,{{user.first_name}},please enter the details</h2>
-                <form action="buy" method="post">
+                <h2>Register</h2>
+                <form action="register" method="post">
                     {% csrf_token %}
-                   
-                    
+                    <div class="inputBox">
+                        <input type="text" name="fname" required="">
+                        <label>FirstName</label>
+                    </div>
+                    <div class="inputBox">
+                        <input type="text" name="lname" required="">
+                        <label>LastName</label>
+                    </div>
                     <div class="inputBox">
                         <input type="text" name="username" required="">
-                        <label>street address</label>
+                        <label>Username</label>
                     </div>
                     <div class="inputBox">
-                        <input type="text" name="password" required="">
-                        <label>city</label>    
-                    </div>
-                    <div class="inputBox">
-                        <input type="text" name="password" required="">
-                        <label>state</label>    
-                    </div>
-                    <div class="inputBox">
-                        <input type="text" name="password" required="">
-                        <label>pincode</label>    
-                    </div>
-                    <div class="inputBox">
-                        <input type="text" name="password" required="">
-                        <label>cellphone number</label>    
-                    </div>
-                    <div class="inputBox">
-                        <input type="text" name="password" required="">
-                        <label>city</label>    
-                    </div>
-                    <div  class="inputBox" >
-                        Cashondelivery<input type="radio" name="choice" value="cod" onclick="fun2()">
-                  
-                        Credit Card <input type="radio" name="choice" value="credit" onclick="fun1()">
-                   
-
-                    </div>
-                    <div id="cre" class="inputBox"  style="display: none;">
-                        <input type="text" name="password" required="">
-                        <label>credit/debit number </label> 
-                        
-                    </div>
-                    <div id="cre1" class="inputBox"  style="display: none;">
                         <input type="password" name="password" required="">
-                        <label>cvv </label> 
-                        
+                        <label>Password</label>    
                     </div>
-
-
                     <div class="inputBox">
-       
+                        {% for i in messages %}
+                        {{i}}
+                        {% endfor %}
                     </div>
                     <!--<pre>Not a member?<a href="">Sign up</a></pre>-->
-                    <input type="submit" name="" value="Submit" onclick="fun()">
+                    <input type="submit" name="" value="Submit">
                 </form>
             </div>
         </div>
     </div>
-    <script>
-        function fun(){
-            alert('thankyou for the buying ');
-        }
-        function fun1(){
-            rb=document.getElementById('cre');
-            rb1=document.getElementById('cre1').style.display="block";;
-            rb.style.display="block";
-        }
-        function fun2(){
-            rb=document.getElementById('cre');
-            rb1=document.getElementById('cre1').style.display="none";;
-            rb.style.display="none";
-        }
-    </script>
     
 </body>
 </html>
