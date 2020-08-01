@@ -1,6 +1,10 @@
 # computer-accessories-system-website-using-django
 
-it is the django project for computer accessories sytem website
+it is the django framework for computer accessories sytem website
+
+this website represents the  shopping site of computer accessories which is connected to dbsqlite3 database through django.
+
+by the django admin side we can collect information of users and add products into the main website 
 
 
 ![image](https://user-images.githubusercontent.com/60064405/89095287-0ea93680-d3ea-11ea-9e47-7bea9829814c.png)
