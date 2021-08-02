@@ -1,0 +1,202 @@
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <title>E-Store single page layout </title>
+    <meta charset="utf-8">
+
+    <!-- Linking styles -->
+    <link rel="stylesheet" href="{% static 'css/reset.css' %}" type="text/css" media="screen">
+    <link rel="stylesheet" href="{% static 'css/style.css'%}" type="text/css" media="screen">
+    <link rel="stylesheet" href="{% static 'css/nivo-slider.css' %}" type="text/css" media="screen">
+
+    <!-- Linking scripts -->
+    <script src="{% static 'js/jquery.js' %}"></script>
+    <script src="{% static 'js/jquery.nivo.slider.pack.js'%}"></script>   
+    <script src="{% static 'js/main.js' %}"></script>
+
+    <!--[if lt IE 9]>
+    <script type="text/javascript" src="js/html5.js"></script>
+    <![endif]-->
+</head>
+<body>
+
+<div class="container">
+
+        <header><!-- Defining the header section of the page -->
+
+            <nav><!-- Defining the navigation menu -->
+                <ul>
+                    <li class="selected"><a href="/home">Home</a></li>
+                    <!-- <li><a href="#">Specials</a></li> -->
+
+                    {% if user.is_authenticated %}
+                    <li style="position: absolute; left:80%"><a>hello,{{user.first_name}}</a></li>
+                    <li style="position: absolute; left:90%"><a href="/logout">Logout</a></li>
+                    {% else %}
+                    <li style="position: absolute; left:80%"><a href="/register">register</a></li>
+                    <li style="position: absolute; left:90%"><a href="/login">login</a></li>
+                    {% endif %}
+                    
+                   
+                    
+                </ul>
+            </nav>
+
+
+            <div class="top_head"><!-- Defining the top head element -->
+                <div class="logo"><!-- Defining the logo element -->
+                    <a href="http://www.script-tutorials.com/">
+                        <img src="{% static 'images/logo.jpg' %}" title="E-Store template" alt="E-Store template" />
+                    </a>
+                </div>
+
+                <section id="search"><!-- Search form -->
+                    <form action="#" onsubmit="return false;" method="get">
+                        <input type="text" onfocus="if (this.value =='Search..' ) this.value=''" onblur="if (this.value=='') this.value='Search..'" value="Search.." name="q">
+                        <input type="submit" value="Search">
+                    </form>
+
+                    <ul id="social"><!-- Social profiles links -->
+                        <li><a href="#" title="facebook" rel="external nofollow"><img alt="" src="{% static 'images/facebook.png' %}"></a></li>
+                        <li><a href="#" title="twitter" rel="external nofollow"><img alt="" src="{% static 'images/twitter.png' %}"></a></li>
+                        <li><a href="#" title="linkedin" rel="external nofollow"><img alt="" src="{% static 'images/linkedin.png' %}"></a></li>
+                        <li><a href="#" title="rss" rel="external nofollow"><img alt="" src="{% static 'images/rss.png' %}"></a></li>
+                    </ul>
+                </section>
+            </div>
+
+            <!--<section id="submenu"><!-- Defining the sub menu
+                <ul>
+                    <li><a href="#">Category #1</a></li>
+                    <li><a href="#">Category #2</a></li>
+                    <li><a href="#">Category #3</a></li>
+                    <li><a href="#">Category #4</a></li>
+                    <li><a href="#">Category #5</a></li>
+                    <li><a href="#">Category #6</a></li>
+                </ul>
+            </section>-->
+
+        </header>
+
+        <!-- <div id="slider">
+        
+            <section id="slider-wrapper">
+                <div id="slider" class="nivoSlider">
+                    <img style="display: none;" src="{% static 'images/promo1.jpg'%}" alt="" title="#htmlcaption-1">
+                    <img style="display: none;" src="{% static 'images/promo2.jpg'%}" alt="" title="#htmlcaption-2">
+                    <img style="display: none;" src="{% static 'images/promo3.jpg'%}" alt="" title="#htmlcaption-3">
+                </div>
+                <div id="htmlcaption-1" class="nivo-html-caption">
+                    <h5 class="p2">Welcome to the our E-Shop</h5>
+                    <p>Put any description here</p>
+                </div>
+                <div id="htmlcaption-1" class="nivo-html-caption">
+                    <h5 class="p2">This is promo area</h5>
+                    <p>Put any description here</p>
+                </div>
+                <div id="htmlcaption-2" class="nivo-html-caption">
+                    <h5 class="p2">Where you can add any feature products</h5>
+                    <p>Put any description here</p>
+                </div>
+                <div id="htmlcaption-3" class="nivo-html-caption">
+                    <h5 class="p2">Or something else</h5>
+                    <p>Put any description here</p>
+                </div>
+            </section>
+        </div> -->
+
+        <div id="main" ><!-- Defining submain content section -->
+            <section id="content"><!-- Defining the content section #2 -->
+                <div id="left" style="width: 100%;">
+                    <h3>Your Orders</h3>
+                    <ul>
+                        {% for i in pr %}
+                        <li>
+                            <div style="font-weight: bold;">{{i.date}}</div>
+                            <div class="info">
+                                <a class="title" href="#">{{i.product}}</a>
+                                <p><b>ADDRESS:</b> {{i.street}},{{i.city}},{{i.state}}</p>
+                               
+                               
+                            </div>
+                        </li>
+                        {% endfor %}
+                        
+                    </ul>
+               <!-- </div>
+                <div id="right">
+                    <h3>Top sells</h3>
+                    <ul>
+                        <li>
+                            <div class="img"><a href="#"><img alt="" src="images/post6.jpg"></a></div>
+                            <div class="info">
+                                <a class="title" href="#">Product 7</a>
+                                <div class="price">
+                                    <span class="usual">$600.00 </span>&nbsp;
+                                    <span class="special">$500.00</span>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="img"><a href="#"><img alt="" src="images/post5.jpg"></a></div>
+                            <div class="info">
+                                <a class="title" href="#">Product 8</a>
+                                <div class="price">
+                                    <span class="usual">$500.00 </span>&nbsp;
+                                    <span class="special">$400.00</span>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="img"><a href="#"><img alt="" src="images/post4.jpg"></a></div>
+                            <div class="info">
+                                <a class="title" href="#">Product 9</a>
+                                <div class="price">
+                                    <span class="usual">$700.00 </span>&nbsp;
+                                    <span class="special">$600.25</span>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="img"><a href="#"><img alt="" src="images/post3.jpg"></a></div>
+                            <div class="info">
+                                <a class="title" href="#">Product 10</a>
+                                <div class="price">
+                                    <span class="usual">$805.00 </span>&nbsp;
+                                    <span class="special">$714.25</span>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="img"><a href="#"><img alt="" src="images/post2.jpg"></a></div>
+                            <div class="info">
+                                <a class="title" href="#">Product 11</a>
+                                <div class="price">
+                                    <span class="usual">$1205.00 </span>&nbsp;
+                                    <span class="special">$1000.25</span>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="img"><a href="#"><img alt="" src="images/post1.jpg"></a></div>
+                            <div class="info">
+                                <a class="title" href="#">Product 12</a>
+                                <div class="price">
+                                    <span class="usual">$200.00 </span>&nbsp;
+                                    <span class="special">$190.25</span>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+        </div>-->
+
+
+    
+
+</div>
+
+</body></html>

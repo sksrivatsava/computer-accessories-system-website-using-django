@@ -1,8 +1,9 @@
 from django.shortcuts import render,redirect
 from django.http import HttpResponse
-from .models import products
+from .models import products,address
 from django.contrib.auth.models import User, auth
 from django.contrib import messages
+from datetime import date
 
 # Create your views here.
 def home(request):
@@ -44,8 +45,25 @@ def login(request):
 def logout(request):
     auth.logout(request)
     return redirect('home')
-def buy(request):
+def buy(request,prod):
     if request.method=="POST":
+
+        ob=address()
+        ob.name=request.user
+        ob.product=prod
+        ob.date=date.today()
+        ob.street=request.POST['street']
+        ob.city=request.POST['city']
+        ob.state=request.POST['state']
+        ob.pincode=request.POST['pincode']
+        ob.cell=request.POST['cell']
+        ob.save()
         return redirect('home')
     else:
-        return render(request,'buy.html')
+        s=prod
+        return render(request,'buy.html',{'s':s})
+
+def order(request):
+    l=address.objects.filter(name=str(request.user))
+
+    return render(request,'orders.html',{'pr':l})

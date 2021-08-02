@@ -92,51 +92,32 @@
             <center>BUYING DETAILS</center>
             <div class="box">
                 <h2>Hello,{{user.first_name}},please enter the details</h2>
-                <form action="buy" method="post">
+                <form action="/buy/{{s}}" method="post">
                     {% csrf_token %}
                    
                     
                     <div class="inputBox">
-                        <input type="text" name="username" required="">
+                        <input type="text" name="street" required="">
                         <label>street address</label>
                     </div>
                     <div class="inputBox">
-                        <input type="text" name="password" required="">
+                        <input type="text" name="city" required="">
                         <label>city</label>    
                     </div>
                     <div class="inputBox">
-                        <input type="text" name="password" required="">
+                        <input type="text" name="state" required="">
                         <label>state</label>    
                     </div>
                     <div class="inputBox">
-                        <input type="text" name="password" required="">
+                        <input type="text" name="pincode" required="">
                         <label>pincode</label>    
                     </div>
                     <div class="inputBox">
-                        <input type="text" name="password" required="">
+                        <input type="text" name="cell" required="">
                         <label>cellphone number</label>    
                     </div>
-                    <div class="inputBox">
-                        <input type="text" name="password" required="">
-                        <label>city</label>    
-                    </div>
-                    <div  class="inputBox" >
-                        Cashondelivery<input type="radio" name="choice" value="cod" onclick="fun2()">
-                  
-                        Credit Card <input type="radio" name="choice" value="credit" onclick="fun1()">
-                   
-
-                    </div>
-                    <div id="cre" class="inputBox"  style="display: none;">
-                        <input type="text" name="password" required="">
-                        <label>credit/debit number </label> 
-                        
-                    </div>
-                    <div id="cre1" class="inputBox"  style="display: none;">
-                        <input type="password" name="password" required="">
-                        <label>cvv </label> 
-                        
-                    </div>
+                    
+                 
 
 
                     <div class="inputBox">

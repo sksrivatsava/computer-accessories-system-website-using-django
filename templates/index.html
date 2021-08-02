@@ -37,7 +37,7 @@
                     <li style="position: absolute; left:80%"><a href="/register">register</a></li>
                     <li style="position: absolute; left:90%"><a href="/login">login</a></li>
                     {% endif %}
-                    <li><a href="#">Contact us</a></li>
+                    <li><a href="/orders">Orders</a></li>
                    
                     
                 </ul>
@@ -124,7 +124,7 @@
                                 <div class="actions">
                                     <a href="#">Details</a>
                                     {% if user.is_authenticated %}
-                                    <a href="/buy">Buy Now</a>
+                                    <a href="/buy/{{i.name}}">Buy Now</a>
                                     {% endif %}
                                 </div>
                             </div>
